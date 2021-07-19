@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Types;
 
 public class InfantryUnit : MonoBehaviour, Unit
 {
@@ -21,11 +22,11 @@ public class InfantryUnit : MonoBehaviour, Unit
         
     }
 
-    void go(){
+    public void go(){
 
     }
     
-    void setPosition(int x, int y){
+    public void setPosition(int x, int y){
         this.x = x;
         this.y = y;
     }

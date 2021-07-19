@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private int hp;
     private int money;
-    private List<Unit> units = new ArrayList<>();
+    private List<Unit> units = new List<Unit>();
 
     void Start()
     {
