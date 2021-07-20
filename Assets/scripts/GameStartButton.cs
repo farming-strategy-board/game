@@ -26,5 +26,8 @@ public class GameStartButton : MonoBehaviour
     {
         SceneManager.LoadScene("UnitScene");
     }
-   
+    public void GoGameStartScene()
+    {
+        SceneManager.LoadScene("GameStartScene");
+    }
 }
