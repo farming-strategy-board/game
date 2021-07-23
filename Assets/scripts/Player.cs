@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         units.Add(GameObject.Find("infantryUnit").GetComponent<InfantryUnit>());
     }
 

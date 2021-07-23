@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class UnitLayoutManager : MonoBehaviour
 {
@@ -10,17 +12,17 @@ public class UnitLayoutManager : MonoBehaviour
   
     void Start()
     {
-        UnitLayoutPanel.SetActive(false);
-        // 5ÃÊ ·ÎµùÀÌÈÄ À¯´Ö ¹èÄ¡ Ã¢ µîÀå. 5ÃÊ ·ÎµùÀº ¸ÅÄªÀÌ³ª ÀçÈ­Áö±ÞÀÇ °úÁ¤À» Æ÷ÇÔ.
-        StartCoroutine(DelayTime(5));
+        // UnitLayoutPanel.SetActive(false);
+        // 5ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ Ã¢ ï¿½ï¿½ï¿½ï¿½. 5ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½Äªï¿½Ì³ï¿½ ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+        StartCoroutine(DelayTime(2));
     }
 
     IEnumerator DelayTime(float time)
     {
         yield return new WaitForSeconds(time);
-        LoadingPanel.SetActive(false);
-        UnitLayoutPanel.SetActive(true);
-
+        // LoadingPanel.SetActive(false);
+        // UnitLayoutPanel.SetActive(true);
+        SceneManager.LoadScene("Stadium");
     }
 
     // Update is called once per frame

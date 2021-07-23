@@ -16,7 +16,7 @@ public class GameStartButton : MonoBehaviour
     // Update is called once per frame
     public void GoGameScene()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("MatchScene");
     }
     public void GoPrologScene()
     {

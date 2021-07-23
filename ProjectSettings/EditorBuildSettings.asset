@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UnitScene.unity
     guid: 6414607c7e390bf4398101b1bdf2c15d
+  - enabled: 1
+    path: Assets/Scenes/MatchScene.unity
+    guid: bc972f3cafe581a4eb166999d863b01d
+  - enabled: 1
+    path: Assets/Scenes/Stadium.unity
+    guid: 3e9bf6b3f777b4c2c9da5a83372cabdd
   m_configObjects: {}

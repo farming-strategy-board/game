@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MatchingManager : MonoBehaviour
 {
@@ -15,12 +16,19 @@ public class MatchingManager : MonoBehaviour
         foreach(Player p in gameManager.GetPlayers()){
             walkoverQueue.Enqueue(p);
         }
+        StartCoroutine(DelayTime(5));
     }
     
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator DelayTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene("GameScene");
     }
 
     public string getMatchingTable(){
