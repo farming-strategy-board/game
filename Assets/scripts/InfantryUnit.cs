@@ -16,7 +16,7 @@ public class InfantryUnit : MonoBehaviour, Unit
     
     void Start()
     {
-        this.name = "infantryUnit";
+        
     }
 
     // Update is called once per frame
