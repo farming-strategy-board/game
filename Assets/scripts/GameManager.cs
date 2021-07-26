@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject prefabPlayer;
+
     public const int NUM_PLAYERS = 5;
     public static GameManager instance;
-    private Dictionary<string, Player> players = new Dictionary<string, Player>();
+    private Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
     private Player _MyPlayer;
     public Player MyPlayer {
         get { return _MyPlayer; }
@@ -16,25 +18,19 @@ public class GameManager : MonoBehaviour
         get { return _alivePlayers; }
     }
     private int round = 1;
+    public Dictionary<string, Player> match = new Dictionary<string, Player>();
 
     void Awake(){
         instance = this;
-        players.Add(GameObject.Find("Player5").GetComponent<Player>().id,
-                    GameObject.Find("Player5").GetComponent<Player>());
 
-        players.Add(GameObject.Find("Player4").GetComponent<Player>().id,
-                    GameObject.Find("Player4").GetComponent<Player>());
+        string[] ids = {"E", "D", "C", "B", "A"};
+        foreach(string id in ids){
+            GameObject player = Instantiate(prefabPlayer);
+            player.GetComponent<Player>().id = id;
+            players.Add(id, player);
+        }
 
-        players.Add(GameObject.Find("Player3").GetComponent<Player>().id,
-                    GameObject.Find("Player3").GetComponent<Player>());
-
-        players.Add(GameObject.Find("Player2").GetComponent<Player>().id,
-                    GameObject.Find("Player2").GetComponent<Player>());
-
-        players.Add(GameObject.Find("Player1").GetComponent<Player>().id,
-                    GameObject.Find("Player1").GetComponent<Player>());
-
-        _MyPlayer = players["A"];
+        _MyPlayer = players["A"].GetComponent<Player>();
     }
     // Start is called before the first frame update
     void Start()
@@ -49,11 +45,16 @@ public class GameManager : MonoBehaviour
     }
 
     public Player getPlayerByID(string id){
-        return players[id];
+        return players[id].GetComponent<Player>();
     }
 
     public List<Player> GetPlayers(){
-        return new List<Player>(players.Values);
+        List<Player> list = new List<Player>();
+
+        foreach(GameObject p in players.Values){
+            list.Add(p.GetComponent<Player>());
+        }
+        return list;
     }
 
     public void decreaseAlivePlayers(){

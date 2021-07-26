@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Types;
 
 public class Player : MonoBehaviour
 {
+    public GameObject prefabInfantryUnit;
     // Start is called before the first frame update
     public string id;
     private int _hp = 100;
@@ -12,13 +12,15 @@ public class Player : MonoBehaviour
         get { return _hp; }
     }
     private int money;
-    private List<Unit> units = new List<Unit>();
-    private int aliveUnits;
 
     void Start()
     {
         DontDestroyOnLoad(this);
-        units.Add(GameObject.Find("infantryUnit").GetComponent<InfantryUnit>());
+
+        addNewUnit();
+
+        Unit[] units = GetComponentsInChildren<Unit>();
+        units[0].go();
     }
 
     // Update is called once per frame
@@ -48,16 +50,24 @@ public class Player : MonoBehaviour
         _hp += amount;
     }
 
-    public void purchaseUnit(){
-        GameObject newUnit = Instantiate(GameObject.Find("infantryUnit"));
-        units.Add(newUnit.GetComponent<InfantryUnit>());
+    public void addNewUnit(){
+        GameObject newUnit = Instantiate(prefabInfantryUnit);
+        newUnit.transform.SetParent(gameObject.transform);
     }
 
     public string getUnitsListString(){
-        string result = "";
-        foreach(Unit u in units){
-            result += u.getName() + "\n";
-        }
-        return result + "\n";
+        return "";
+    }
+
+    public void purchaseUnit(){
+
+    }
+
+    public int getAliveUnitNum(){
+        return GetComponentsInChildren<Unit>().Length;
+    }
+
+    public void deathUnit(GameObject obj){
+        Debug.Log(obj + " dead");
     }
 }

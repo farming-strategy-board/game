@@ -9,19 +9,17 @@ public class UnitLayoutManager : MonoBehaviour
     public GameObject LoadingPanel;
     public GameObject UnitLayoutPanel;
 
+    private GameManager gameManager;
   
     void Start()
     {
-        // UnitLayoutPanel.SetActive(false);
-        // 5�� �ε����� ���� ��ġ â ����. 5�� �ε��� ��Ī�̳� ��ȭ������ ������ ����.
+        gameManager = GameManager.instance;
         StartCoroutine(DelayTime(2));
     }
 
     IEnumerator DelayTime(float time)
     {
         yield return new WaitForSeconds(time);
-        // LoadingPanel.SetActive(false);
-        // UnitLayoutPanel.SetActive(true);
         SceneManager.LoadScene("Stadium");
     }
 

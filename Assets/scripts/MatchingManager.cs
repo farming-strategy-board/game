@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MatchingManager : MonoBehaviour
 {
     private GameManager gameManager;
-    private Dictionary<string, Player> histories = new Dictionary<string, Player>();
+    private Dictionary<string, Player> histories;
     private Queue<Player> walkoverQueue = new Queue<Player>();
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.instance;
+        histories = gameManager.match;
         foreach(Player p in gameManager.GetPlayers()){
             walkoverQueue.Enqueue(p);
         }
+
+        string matchTable = getMatchingTable();
+        Debug.Log(matchTable);
+
         StartCoroutine(DelayTime(5));
     }
     
@@ -29,6 +35,10 @@ public class MatchingManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene("GameScene");
+    }
+
+    public Player getEnemyPlayer(string myname){
+        return histories[myname];
     }
 
     public string getMatchingTable(){
@@ -61,6 +71,7 @@ public class MatchingManager : MonoBehaviour
             walkoverQueue.Enqueue(walkoverPlayer);
             
             players.Remove(walkoverPlayer);
+            histories[walkoverPlayer.id] = walkoverPlayer;
         }
 
         result += "/";
