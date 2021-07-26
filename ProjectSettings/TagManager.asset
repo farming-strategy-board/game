@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Infantry
+  - Infantry2
+  - Infantry3
+  - Unit
+  - UnitLayer
   layers:
   - Default
   - TransparentFX
@@ -11,14 +16,14 @@ TagManager:
   - 
   - Water
   - UI
+  - enemy
+  - player
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Infantry2
+  - Infantry1
+  - Background
   - 
   - 
   - 
