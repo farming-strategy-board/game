@@ -11,21 +11,23 @@ public class MoveToClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       /* gameObject.SetActive(false);
+        unitLayer = GameObject.Find("UnitLayoutManager");*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (unitLayer.activeSelf == true)
-        {
+        //if (unitLayer.activeSelf == true)
+        //{
+        //    gameObject.SetActive(true);
 
             if (Input.GetMouseButtonDown(0))
             {
                 CalTargetPos();
             }
             MoveToTarget();
-        }
+        //}
     }
 
     void CalTargetPos()
