@@ -5,14 +5,23 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
 {
-    public void OnDrop(PointerEventData eventData)
+    public GameObject item
     {
-        Debug.Log("OnDrop");
-        if (eventData.pointerDrag != null)
+        get
         {
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            if (transform.childCount > 0)
+            {
+                return transform.GetChild(0).gameObject;
+            }
+            return null;
         }
     }
 
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (!item)
+        {
+            DragHandler.itemDrag.transform.SetParent(transform);
+        }
+    }
 }
-

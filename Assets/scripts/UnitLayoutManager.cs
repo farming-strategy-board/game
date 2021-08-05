@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class UnitLayoutManager : MonoBehaviour
 {
-    public GameObject LoadingPanel;
-    public GameObject UnitLayoutPanel;
+    //public GameObject LoadingPanel;
+    //public GameObject UnitLayoutPanel;
 
     private GameManager gameManager;
   
